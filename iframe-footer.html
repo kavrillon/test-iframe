@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" xml:lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Test IFrame - host</title>
+    <style type="text/css">
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            padding: 0;
+            margin: 0;
+        }
+
+        .iframe {
+            color: #fff;
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        .menu {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+            height: 100%;
+            transition: 200ms all;
+            text-align: center;
+        }
+        .menu_item {
+            position: relative;
+        }
+        @media (min-width: 992px) {
+            .menu_item {
+                float: left;
+                width: 25%;
+                text-align: center;
+                cursor: pointer;
+            }
+        }
+        .menu_item_title {
+            display: block;
+            background: #000;
+            text-transform: uppercase;
+            padding: 15px;
+        }
+        .menu_item_sub {
+            display: none;
+            padding: 15px;
+            transition: 200ms all;
+            list-style-type: none;
+        }
+        @media (min-width: 992px) {
+            .menu_item_sub {
+                display: block;
+            }
+        }
+        .menu_item_sub.active {
+            display: block;
+        }
+        .menu_item_sub a {
+            display: block;
+            padding: 5px;
+            color: white;
+        }
+
+        .clear {
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+<div class="iframe">
+    <ul class="menu">
+        <li class="menu_item">
+            <span class="menu_item_title">Footer Item 1</span>
+            <ul class="menu_item_sub">
+                <li class="menu_item_sub_item"><a href="https://s.codepen.io/avri/debug/prawgW/yYryLDXXWWpM">Subitem 1.1</a></li>
+                <li class="menu_item_sub_item"><a href="https://s.codepen.io/avri/debug/prawgW/yYryLDXXWWpM">Subitem 1.2</a></li>
+                <li class="menu_item_sub_item"><a href="https://s.codepen.io/avri/debug/prawgW/yYryLDXXWWpM">Subitem 1.3</a></li>
+                <li class="menu_item_sub_item"><a href="https://s.codepen.io/avri/debug/prawgW/yYryLDXXWWpM">Subitem 1.4</a></li>
+            </ul>
+        </li>
+        <li class="menu_item">
+            <span class="menu_item_title">Footer Item 2</span>
+            <ul class="menu_item_sub">
+                <li class="menu_item_sub_item"><a href="https://s.codepen.io/avri/debug/prawgW/yYryLDXXWWpM">Subitem 2.1</a></li>
+                <li class="menu_item_sub_item"><a href="https://s.codepen.io/avri/debug/prawgW/yYryLDXXWWpM">Subitem 2.2</a></li>
+                <li class="menu_item_sub_item"><a href="https://s.codepen.io/avri/debug/prawgW/yYryLDXXWWpM">Subitem 2.3</a></li>
+            </ul>
+        </li>
+        <li class="menu_item">
+            <span class="menu_item_title">Footer Item 3</span>
+        </li>
+        <li class="menu_item">
+            <span class="menu_item_title">Footer Item 4</span>
+            <ul class="menu_item_sub">
+                <li class="menu_item_sub_item"><a href="https://www.google.com?subitem=4.1">External 4.1</a></li>
+                <li class="menu_item_sub_item"><a href="https://www.google.com?subitem=4.1">External 4.2</a></li>
+                <li class="menu_item_sub_item"><a href="https://www.google.com?subitem=4.1">External 4.3</a></li>
+                <li class="menu_item_sub_item"><a href="https://www.google.com?subitem=4.1">External 4.4</a></li>
+                <li class="menu_item_sub_item"><a href="https://www.google.com?subitem=4.1">External 4.5</a></li>
+            </ul>
+        </li>
+    </ul>
+    <div class="clear"></div>
+</div>
+
+<script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
+
+<script src="https://cdn.rawgit.com/davidjbradshaw/iframe-resizer/master/js/iframeResizer.contentWindow.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        $("a").click(function(){
+            console.log($(this).attr("href"));
+            top.window.location.href=$(this).attr("href");
+            return true;
+        });
+
+        $('.menu_item').click(function() {
+            var isActive = $(this).find('.menu_item_sub').hasClass('active') ? true : false;
+            $('.menu_item_sub').removeClass('active');
+            if (!isActive) $(this).find('.menu_item_sub').addClass('active');
+        });
+
+        $('.menuButton').click(function() {
+            $('.iframe').toggleClass('active');
+        });
+    });
+
+</script>
+</body>
+</html>
