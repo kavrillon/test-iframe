@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" xml:lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Test IFrame - host</title>
+    <style type="text/css">
+        body {
+            margin: 0;
+            padding: 0;
+            font-size: 18px;
+            line-height: 1.8rem;
+        }
+        body.menu-active #iframeHeader {
+            -webkit-transform: translateX(0);
+            transform: translateX(0);
+        }
+        body.menu-active .container {
+            margin-left: 300px;
+        }
+        @media (min-width: 992px) {
+            body.menu-active .container {
+                margin-left: 0;
+            }
+        }
+
+        iframe {
+            border: none;
+            padding: 0;
+            margin: 0;
+            width: 100%;
+        }
+
+        #iframeHeader {
+            position: fixed;
+            -webkit-transition: 200ms all;
+            transition: 200ms all;
+            z-index: 10;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 300px;
+        }
+        @media (min-width: 992px) {
+            #iframeHeader {
+                width: 100%;
+                height: 96px;
+                -webkit-transform: none;
+                transform: none;
+            }
+        }
+
+        .container {
+            margin: 0;
+            padding: 15px;
+            -webkit-transition: 200ms all;
+            transition: 200ms all;
+            text-align: center;
+        }
+        @media (min-width: 992px) {
+            .container {
+                margin: 96px auto 0;
+                max-width: 992px;
+                z-index: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <iframe id="iframeHeader" src="https://s.codepen.io/avri/debug/qXpJyQ/NjrYzwQZJoGA"></iframe>
+
+    <div class="container">
+        <h1>My content</h1>
+        <div class="container-content">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam finibus sagittis neque vitae porta. Integer eu ligula ornare, malesuada orci at, vulputate metus. Cras aliquet ex nec maximus venenatis. Suspendisse et pellentesque dui. Proin pellentesque condimentum lacinia. Pellentesque vehicula leo ac nunc molestie sodales. Duis molestie mattis ex non accumsan. Maecenas luctus vitae nibh ac tempor. Etiam tincidunt condimentum nunc vitae porttitor. Duis nec lacinia purus. Nullam enim odio, semper nec euismod eget, sollicitudin sit amet velit. Mauris at libero euismod orci elementum auctor. <a href="https://www.google.com">Nam sed ante turpis</a>.
+
+            Proin id metus quis felis sollicitudin scelerisque. Mauris at consequat libero. Donec in tellus vitae felis tristique ultricies sed nec elit. Sed ornare quam ex, et blandit mi cursus nec. Nulla facilisi. Sed tincidunt lorem ac ligula iaculis, vitae auctor nibh finibus. Vestibulum egestas lectus et velit gravida tincidunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla pharetra libero et nunc auctor porta. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Proin vitae tincidunt orci. Nam ac fermentum est. Vestibulum porta dapibus euismod. Ut accumsan quis ipsum non pharetra. Nullam urna lectus, imperdiet a odio ut, pretium ultricies felis.
+
+            Proin id metus quis felis sollicitudin scelerisque. Mauris at consequat libero. Donec in tellus vitae felis tristique ultricies sed nec elit. Sed ornare quam ex, et blandit mi cursus nec. Nulla facilisi. Sed tincidunt lorem ac ligula iaculis, vitae auctor nibh finibus. Vestibulum egestas lectus et velit gravida tincidunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla pharetra libero et nunc auctor porta. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Proin vitae tincidunt orci. Nam ac fermentum est. Vestibulum porta dapibus euismod. Ut accumsan quis ipsum non pharetra. Nullam urna lectus, imperdiet a odio ut, pretium ultricies felis.
+
+            Proin tristique porttitor augue id ultrices. Proin pulvinar elementum tellus id viverra. Cras mollis cursus elit in mollis. Aenean ut egestas diam. Donec neque dolor, pellentesque ac elit eu, sodales lacinia elit. Cras gravida tempus tempor. Nulla non vehicula metus. Sed egestas non augue vestibulum viverra.
+
+            Nullam pretium tortor dignissim velit ultrices molestie. Morbi ultricies arcu et justo eleifend sodales. Mauris posuere ligula nunc, id fringilla orci tempus eget. Nullam eget urna sapien. Aliquam id lectus sit amet lectus cursus luctus vel a tellus. Ut aliquam justo non elementum mollis. Cras accumsan magna magna, nec vulputate nulla malesuada nec. Suspendisse potenti. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Ut aliquet, nunc vel elementum tristique, orci nisl convallis lectus, quis dictum velit est eu odio. Suspendisse diam diam, hendrerit eget tempus vel, semper et nibh. In non dui eget lectus sodales dignissim id sed purus. Fusce tempus finibus diam nec pretium. Donec a diam quis nisi pellentesque mollis.
+        </div>
+    </div>
+    <iframe id="iframeFooter" src="https://s.codepen.io/avri/debug/dzdWYm/bYMdyGRRnybr"></iframe>
+
+    <script
+            src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous"></script>
+
+    <script>
+        $(document).ready(function() {
+            iFrameResize({log:true}, '#iframeHeader');
+            iFrameResize({log:true}, '#iframeFooter');
+
+            $('.open-menu').click(function() {
+                $('body').toggleClass('menu-active');
+            });
+        });
+    </script>
+</body>
+</html>
